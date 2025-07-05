@@ -16,8 +16,13 @@ function updateTimer() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     
+    const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
     minutesElement.textContent = minutes.toString().padStart(2, '0');
     secondsElement.textContent = seconds.toString().padStart(2, '0');
+
+    // Update URL and tab title with countdown time
+    updateUrlAndTitle(timeString);
 
     if (timeLeft === 0) {
         clearInterval(timerId);
@@ -26,7 +31,27 @@ function updateTimer() {
         if (navigator.vibrate) {
             navigator.vibrate(200);
         }
+        // Clear URL and title when timer ends
+        updateUrlAndTitle('');
     }
+}
+
+function updateUrlAndTitle(timeString) {
+    // Update browser tab title
+    if (timeString) {
+        document.title = `(${timeString}) Pomodoro Timer`;
+    } else {
+        document.title = 'Pomodoro Timer';
+    }
+    
+    // Update URL without page reload
+    const url = new URL(window.location);
+    if (timeString) {
+        url.searchParams.set('time', timeString);
+    } else {
+        url.searchParams.delete('time');
+    }
+    window.history.replaceState({}, '', url);
 }
 
 function startTimer() {
