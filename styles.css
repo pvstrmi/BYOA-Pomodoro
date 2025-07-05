@@ -15,6 +15,7 @@ body {
     background: #ffffff;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
     width: 500px;
+    position: relative;
 }
 
 h1 {
@@ -119,8 +120,9 @@ h1 {
 }
 
 .mode-icon {
-    position: static;
-    margin-bottom: 0.5rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
     width: 40px;
     height: 40px;
     display: flex;
