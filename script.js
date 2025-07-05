@@ -114,6 +114,9 @@ function setThemeIcon() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('dark-mode');
+    setThemeIcon();
+
     // Initialize
     setPomodoro();
 
@@ -126,7 +129,6 @@ window.addEventListener('DOMContentLoaded', () => {
     longBreakButton.addEventListener('click', setLongBreak);
 
     if (themeToggle) {
-        setThemeIcon();
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             setThemeIcon();
