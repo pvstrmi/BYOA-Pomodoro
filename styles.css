@@ -127,30 +127,6 @@ h1 {
     font-size: 1.1rem;
 }
 
-.mode-icon {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f1f2f3;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    transition: background 0.2s;
-    z-index: 2;
-    padding: 0;
-}
-
-.mode-icon svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-/* Remove mode-label styling if not used */
 .mode-label {
     display: none;
 }
@@ -194,10 +170,6 @@ body.dark-mode .timer,
 body.dark-mode .mode-switches button,
 body.dark-mode .controls button {
     color: #f1f2f3;
-}
-
-body.dark-mode .mode-icon {
-    background: #23272b;
 }
 
 body.dark-mode .theme-toggle {
