@@ -11,6 +11,10 @@ const shortBreakButton = document.getElementById('short-break');
 const longBreakButton = document.getElementById('long-break');
 const modeIcon = document.getElementById('mode-icon');
 const themeToggle = document.getElementById('theme-toggle');
+const focusModal = document.getElementById('focus-modal');
+const focusInput = document.getElementById('focus-input');
+const focusSubmit = document.getElementById('focus-submit');
+const focusDisplay = document.getElementById('focus-display');
 
 function updateTimer() {
     const minutes = Math.floor(timeLeft / 60);
@@ -77,6 +81,8 @@ function resetTimer() {
     timeLeft = 25 * 60; // 25 minutes in seconds
     updateTimer();
     setModeIcon('work');
+    setFocusDisplay('');
+    showFocusModal();
 }
 
 function setPomodoro() {
@@ -127,6 +133,40 @@ function setThemeIcon() {
         themeToggle.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="#6d6d6d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" fill="#bfc7d1"/></svg>`;
     }
 }
+
+function showFocusModal() {
+    focusModal.style.display = 'flex';
+    focusInput.value = '';
+    focusInput.focus();
+}
+
+function hideFocusModal() {
+    focusModal.style.display = 'none';
+}
+
+function setFocusDisplay(text) {
+    focusDisplay.textContent = text ? `Focus: ${text}` : '';
+}
+
+focusSubmit.addEventListener('click', () => {
+    const value = focusInput.value.trim();
+    if (value) {
+        setFocusDisplay(value);
+        hideFocusModal();
+    } else {
+        focusInput.focus();
+    }
+});
+
+focusInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        focusSubmit.click();
+    }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    showFocusModal();
+});
 
 // Initialize
 setPomodoro();

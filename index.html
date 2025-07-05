@@ -10,10 +10,18 @@
     <div class="container">
         <div id="mode-icon" class="mode-icon" title="Mode"></div>
         <button id="theme-toggle" class="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light or dark mode"></button>
+        <div id="focus-display" class="focus-display"></div>
         <h1>Pomodoro Timer</h1>
         <div class="timer">
             <div class="timer-digits">
                 <span id="minutes">25</span>:<span id="seconds">00</span>
+            </div>
+        </div>
+        <div id="focus-modal" class="focus-modal">
+            <div class="focus-modal-content">
+                <label for="focus-input">What are you focused on today?</label>
+                <input id="focus-input" type="text" maxlength="100" placeholder="Enter your focus..." />
+                <button id="focus-submit">Start</button>
             </div>
         </div>
         <div class="controls">

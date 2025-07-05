@@ -220,4 +220,81 @@ body.dark-mode .controls button#start:hover {
 body.dark-mode .mode-switches button {
     background: #2d3237;
     color: #f1f2f3;
+}
+
+.focus-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.focus-modal-content {
+    background: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 320px;
+}
+.focus-modal-content label {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #212b36;
+}
+.focus-modal-content input {
+    font-size: 1.1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 1rem;
+    width: 100%;
+    outline: none;
+}
+.focus-modal-content button {
+    font-size: 1.1rem;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    border: none;
+    background: #008060;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.focus-modal-content button:hover {
+    background: #004c3f;
+}
+.focus-display {
+    font-size: 1.1rem;
+    color: #008060;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    min-height: 1.5rem;
+}
+body.dark-mode .focus-modal-content {
+    background: #23272b;
+    color: #f1f2f3;
+}
+body.dark-mode .focus-modal-content label {
+    color: #f1f2f3;
+}
+body.dark-mode .focus-modal-content input {
+    background: #23272b;
+    color: #f1f2f3;
+    border: 1px solid #444b53;
+}
+body.dark-mode .focus-modal-content button {
+    background: #00b894;
+    color: #fff;
+}
+body.dark-mode .focus-modal-content button:hover {
+    background: #008060;
+}
+body.dark-mode .focus-display {
+    color: #00b894;
 } 
