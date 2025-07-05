@@ -11,10 +11,6 @@ const shortBreakButton = document.getElementById('short-break');
 const longBreakButton = document.getElementById('long-break');
 const modeIcon = document.getElementById('mode-icon');
 const themeToggle = document.getElementById('theme-toggle');
-const focusModal = document.getElementById('focus-modal');
-const focusInput = document.getElementById('focus-input');
-const focusSubmit = document.getElementById('focus-submit');
-const focusDisplay = document.getElementById('focus-display');
 
 function updateTimer() {
     const minutes = Math.floor(timeLeft / 60);
@@ -81,8 +77,6 @@ function resetTimer() {
     timeLeft = 25 * 60; // 25 minutes in seconds
     updateTimer();
     setModeIcon('work');
-    setFocusDisplay('');
-    showFocusModal();
 }
 
 function setPomodoro() {
@@ -134,55 +128,23 @@ function setThemeIcon() {
     }
 }
 
-function showFocusModal() {
-    focusModal.style.display = 'flex';
-    focusInput.value = '';
-    focusInput.focus();
-}
-
-function hideFocusModal() {
-    focusModal.style.display = 'none';
-}
-
-function setFocusDisplay(text) {
-    focusDisplay.textContent = text ? `Focus: ${text}` : '';
-}
-
-focusSubmit.addEventListener('click', () => {
-    const value = focusInput.value.trim();
-    if (value) {
-        setFocusDisplay(value);
-        hideFocusModal();
-    } else {
-        focusInput.focus();
-    }
-});
-
-focusInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        focusSubmit.click();
-    }
-});
-
 window.addEventListener('DOMContentLoaded', () => {
-    showFocusModal();
-});
+    // Initialize
+    setPomodoro();
 
-// Initialize
-setPomodoro();
+    // Event listeners
+    startButton.addEventListener('click', startTimer);
+    pauseButton.addEventListener('click', pauseTimer);
+    resetButton.addEventListener('click', resetTimer);
+    pomodoroButton.addEventListener('click', setPomodoro);
+    shortBreakButton.addEventListener('click', setShortBreak);
+    longBreakButton.addEventListener('click', setLongBreak);
 
-// Event listeners
-startButton.addEventListener('click', startTimer);
-pauseButton.addEventListener('click', pauseTimer);
-resetButton.addEventListener('click', resetTimer);
-pomodoroButton.addEventListener('click', setPomodoro);
-shortBreakButton.addEventListener('click', setShortBreak);
-longBreakButton.addEventListener('click', setLongBreak);
-
-if (themeToggle) {
-    setThemeIcon();
-    themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
+    if (themeToggle) {
         setThemeIcon();
-    });
-} 
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            setThemeIcon();
+        });
+    }
+}); 
